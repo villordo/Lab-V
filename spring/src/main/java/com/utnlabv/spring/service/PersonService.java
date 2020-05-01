@@ -21,12 +21,19 @@ public class PersonService {
         personRepository.save(person);
     }
 
-    public List<Person> getPerson(){
-        return personRepository.findAll();
+    public List<Person> getPerson(String name){
+        if(name == null){
+            return personRepository.findAll();
+        }
+        return personRepository.findByName(name);
     }
 
     public Person getPerson(Integer personId){
         return personRepository.findById(personId).get();
+    }
+
+    public List<Person> getPersonByAge(Integer age){
+        return personRepository.findByAge(age);
     }
 
 }

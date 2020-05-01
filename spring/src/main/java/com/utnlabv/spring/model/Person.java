@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.validation.constraints.NotNull;
 
-@Entity //tabla en la bdd
+@Entity //Entidad de persistencia
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -21,6 +21,8 @@ public class Person {
     private String name;
     @NotNull
     private String lastName;
+    @NotNull
+    private Integer age;
 
     //TODO
     //agregar un filter nuevo

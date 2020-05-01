@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.validation.Valid;
 import java.util.List;
 
-@RestController
-@RequestMapping("/person")
+@RestController//avisa que la clase es un controller
+@RequestMapping("/person")//indica una ruta general a la clase
 public class PersonController {
     private final PersonService personService;
 
@@ -25,13 +25,17 @@ public class PersonController {
     }
 
     @GetMapping("/")
-    public List<Person> getPerson(){
-        return personService.getPerson();
-        
+    public List<Person> getPerson(@RequestParam(required = false) String name){
+        return personService.getPerson(name);
     }
 
     @PostMapping("/")
     public void addPerson(@RequestBody @Valid Person person){
         personService.add(person);
+    }
+
+    @GetMapping("/{personAge}")
+    public List<Person> getPersonByAge(@PathVariable Integer age){
+        return personService.getPersonByAge(age);
     }
 }
