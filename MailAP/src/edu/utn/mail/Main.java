@@ -18,6 +18,7 @@ public class Main {
 	//1)Connection
         try {
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+            //Class.forName("com.mysql.jdbc.Driver").newInstance();
         } catch (InstantiationException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
@@ -27,6 +28,7 @@ public class Main {
         }
         //se genera la conexion
         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mail","root","");
+
 
         UserDao userDao = new UserMySQLDao(con);
         UserService userService = new UserService(userDao);

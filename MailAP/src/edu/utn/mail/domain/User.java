@@ -9,7 +9,7 @@ public class User {
     String surname;
     City city;
 
-    public User(Integer userId, String name,String surname, String userName, String password, City city) {
+    public User(Integer userId, String name, String password, String userName,String surname, City city) {
         this.userId = userId;
         this.name = name;
         this.userName = userName;

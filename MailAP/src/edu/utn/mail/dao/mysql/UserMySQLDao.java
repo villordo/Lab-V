@@ -18,42 +18,24 @@ public class UserMySQLDao implements UserDao {
     public UserMySQLDao(Connection con) {
         this.con = con;
     }
-
     @Override
-    public User getByUserName(String userName, String password) {
-        try{
-            PreparedStatement ps = con.prepareStatement("select * from users where username = ? and pwd=?");
-            ps.setString(1,userName);
-            ps.setString(2,password);
+    public User getByUserName(String username, String password) {
+        try {
+            PreparedStatement ps = con.prepareStatement("select * from users u inner join cities c inner join countries co on co.id_country = c.id_country on u.id_city = c.id_city where username = ? and pwd=?");
+            ps.setString(1, username);
+            ps.setString(2, password);
             ResultSet rs = ps.executeQuery();
-            rs.next();
-            String a = rs.getString("name");
-            PreparedStatement psCity = con.prepareStatement("select * from cities where id_city = ?");
-            psCity.setInt(1,rs.getInt("id_city"));
-            ResultSet rsCity = psCity.executeQuery();
-            rsCity.next();
-            String b = rsCity.getString("city_name");
-            int x = rsCity.getInt("id_country");
-            PreparedStatement psCountry = con.prepareStatement("select * from countries where id_country = ?");
-            psCountry.setInt(1,x);
-            ResultSet rsCountry = psCountry.executeQuery();
-            rsCountry.next();
-            String c = rsCountry.getString("country_name");
             User u = null;
-
-                u = new User(rs.getInt("id_user"),rs.getString("name"),rs.getString("surname"),rs.getString("username"),rs.getString("pwd"),
-                        new City(rsCity.getInt("id_city"),rsCity.getString("city_name"),
-                                new Country(rsCountry.getInt("id_country"),rsCountry.getString("country_name"))));
-
+            if (rs.next()) {
+                u =  new User(rs.getInt("id_user"), rs.getString("name"), rs.getString("pwd"),
+                        rs.getString("surname"), rs.getString("username"), new City(rs.getInt("id_city"),
+                        rs.getString("city_name"), new Country(rs.getInt("id_country"), rs.getString("country_name"))));
+            }
             rs.close();
             ps.close();
-            rsCity.close();
-            psCity.close();
-            rsCountry.close();
-            psCountry.close();
             return u;
-        }catch (SQLException e){
-            throw new RuntimeException("Error al obtener los datos",e);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error al obtener datos de usuario", e);
         }
     }
 
