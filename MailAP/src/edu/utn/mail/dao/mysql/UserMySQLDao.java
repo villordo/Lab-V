@@ -1,9 +1,11 @@
 package edu.utn.mail.dao.mysql;
 
+import com.mysql.cj.exceptions.MysqlErrorNumbers;
 import edu.utn.mail.dao.UserDao;
 import edu.utn.mail.domain.City;
 import edu.utn.mail.domain.Country;
 import edu.utn.mail.domain.User;
+import edu.utn.mail.exception.UserAlreadyExistsExecption;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,6 +20,7 @@ public class UserMySQLDao implements UserDao {
     public UserMySQLDao(Connection con) {
         this.con = con;
     }
+
     @Override
     public User getByUserName(String username, String password) {
         try {
@@ -27,9 +30,7 @@ public class UserMySQLDao implements UserDao {
             ResultSet rs = ps.executeQuery();
             User u = null;
             if (rs.next()) {
-                u =  new User(rs.getInt("id_user"), rs.getString("name"), rs.getString("pwd"),
-                        rs.getString("surname"), rs.getString("username"), new City(rs.getInt("id_city"),
-                        rs.getString("city_name"), new Country(rs.getInt("id_country"), rs.getString("country_name"))));
+                u = createUser(rs);
             }
             rs.close();
             ps.close();
@@ -44,9 +45,35 @@ public class UserMySQLDao implements UserDao {
         return null;
     }
 
+    public User createUser(ResultSet rs) throws SQLException {
+        User u = new User(rs.getInt("id_user"), rs.getString("name"), rs.getString("pwd"),
+                rs.getString("surname"), rs.getString("username"), new City(rs.getInt("id_city"),
+                rs.getString("city_name"), new Country(rs.getInt("id_country"), rs.getString("country_name"))));
+        return u;
+    }
+
     @Override
-    public User add(User value) {
-        return null;
+    public User add(User value) throws UserAlreadyExistsExecption {
+        try {
+            PreparedStatement ps = con.prepareStatement("insert into users (name,surname,username,pwd,id_city) values (?,?,?,?,?);", PreparedStatement.RETURN_GENERATED_KEYS);
+            ps.setString(1, value.getName());
+            ps.setString(2, value.getSurname());
+            ps.setString(3, value.getUserName());
+            ps.setString(4, value.getPassword());
+            ps.setInt(5, value.getCity().getCityId());
+            ps.execute();
+            ResultSet rs = ps.getGeneratedKeys();//obtengo el id que se genero en la d bdd del user que acabo de ingresar.
+            if (rs != null && rs.next()) {
+                value.setUserId(rs.getInt(1));//seteo el id del usuario luego de haberlo insertado.
+            }
+        } catch (SQLException e) {
+            if (e.getErrorCode() == MysqlErrorNumbers.ER_DUP_ENTRY) { //no lo se rick,preguntar(?
+                throw new UserAlreadyExistsExecption();
+            } else {
+                throw new RuntimeException("Error al agregar usuario", e);
+            }
+        }
+        return value;
     }
 
     @Override
@@ -61,7 +88,6 @@ public class UserMySQLDao implements UserDao {
 
     @Override
     public void remove(Integer id) {
-        throw new UnsupportedOperationException();
 
     }
 

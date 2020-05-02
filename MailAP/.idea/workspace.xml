@@ -2,19 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aec8d67e-4c0a-421f-af56-75e00ef3e766" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_8_0_18.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/edu/utn/mail/exception/RecordExistsExecption.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/edu/utn/mail/exception/UserAlreadyExistsExecption.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MailAP.iml" beforeDir="false" afterPath="$PROJECT_DIR$/MailAP.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/mysql-connector-java-8.0.18.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MailAP/edu/utn/mail/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MailAP/edu/utn/mail/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MailAP/edu/utn/mail/dao/mysql/UserMySQLDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MailAP/edu/utn/mail/dao/mysql/UserMySQLDao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MailAP/edu/utn/mail/domain/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MailAP/edu/utn/mail/domain/User.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/edu/utn/mail/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/utn/mail/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/utn/mail/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/utn/mail/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/utn/mail/dao/AbstractDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/utn/mail/dao/AbstractDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/edu/utn/mail/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/utn/mail/dao/UserDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/edu/utn/mail/dao/mysql/UserMySQLDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/utn/mail/dao/mysql/UserMySQLDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/edu/utn/mail/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/utn/mail/domain/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../spring/src/main/java/com/utnlabv/spring/controller/PersonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../spring/src/main/java/com/utnlabv/spring/controller/PersonController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../spring/src/main/resources/aplication.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../spring/src/main/resources/aplication.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/utn/mail/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/utn/mail/service/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,10 +98,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="194" y="80" key="#com.intellij.ide.util.MemberChooser" timestamp="1587857999489">
+    <state x="194" y="80" key="#com.intellij.ide.util.MemberChooser" timestamp="1588446135258">
       <screen x="0" y="0" width="1360" height="728" />
     </state>
-    <state x="194" y="80" key="#com.intellij.ide.util.MemberChooser/0.0.1360.728@0.0.1360.728" timestamp="1587857999489" />
+    <state x="194" y="80" key="#com.intellij.ide.util.MemberChooser/0.0.1360.728@0.0.1360.728" timestamp="1588446135258" />
     <state width="382" height="466" key="DebuggerActiveHint" timestamp="1587857735332">
       <screen x="0" y="0" width="1360" height="728" />
     </state>
@@ -150,6 +150,10 @@
       <screen x="0" y="0" width="1360" height="728" />
     </state>
     <state x="376" y="188" key="com.intellij.ide.util.TipDialog/0.0.1360.728@0.0.1360.728" timestamp="1587938683793" />
+    <state x="336" y="162" key="run.anything.popup" timestamp="1588442376425">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state x="336" y="162" key="run.anything.popup/0.0.1360.728@0.0.1360.728" timestamp="1588442376425" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/MailAP$Main__1_.ic" NAME="Main (1) Coverage Results" MODIFIED="1587851539533" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

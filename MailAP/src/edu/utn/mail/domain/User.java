@@ -17,6 +17,13 @@ public class User {
         this.surname = surname;
         this.city = city;
     }
+    public User( String name, String username, String password, String surname, City city) {
+        this.name = name;
+        this.userName = username;
+        this.password = password;
+        this.surname = surname;
+        this.city = city;
+    }
 
     public void mostrar(){
         System.out.println("ID: "+this.userId);
