@@ -41,7 +41,7 @@ public class UserMySQLDao implements UserDao {
     }
 
     @Override
-    public User getByCity(City city) {
+        public List<User> getByCity(City city) {
         return null;
     }
 

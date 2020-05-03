@@ -16,7 +16,7 @@ public class Person {
 
     @Id //primary key
     @GeneratedValue //autoincrement de bdd
-    private Integer idPersona;
+    private Integer ID;
     @NotNull
     private String name;
     @NotNull

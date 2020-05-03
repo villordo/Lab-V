@@ -19,14 +19,14 @@ public class PersonController {
         this.personService = personService;
     }
 
-    @GetMapping("/{personId}")
-    public Person getPersonById(@PathVariable Integer personId ){
-        return personService.getPerson(personId);
+    @GetMapping("/{personID}")
+    public Person getPersonByID(@PathVariable Integer personID ){
+        return personService.getPersonByID(personID);
     }
 
     @GetMapping("/")
-    public List<Person> getPerson(@RequestParam(required = false) String name){
-        return personService.getPerson(name);
+    public List<Person> getPersons(@RequestParam(required = false) String name,Integer age){
+        return personService.getPersons(name,age);
     }
 
     @PostMapping("/")
@@ -34,8 +34,4 @@ public class PersonController {
         personService.add(person);
     }
 
-    @GetMapping("/{personAge}")
-    public List<Person> getPersonByAge(@PathVariable Integer age){
-        return personService.getPersonByAge(age);
-    }
 }

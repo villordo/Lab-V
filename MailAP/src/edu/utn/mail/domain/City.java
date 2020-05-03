@@ -1,5 +1,7 @@
 package edu.utn.mail.domain;
 
+import java.util.Objects;
+
 public class City {
     Integer cityId;
     String name;
@@ -43,5 +45,18 @@ public class City {
 
     public void setCountry(Country country) {
         this.country = country;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        City city = (City) o;
+        return Objects.equals(cityId, city.cityId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cityId);
     }
 }
